@@ -465,48 +465,30 @@ function initProfile() {
   render();
 }
 
-function initHeroSlider() {
-  const root = document.querySelector("[data-hero-slider]");
-  if (!root) return;
-  const slides = [...root.querySelectorAll("[data-hero-slide]")];
-  if (slides.length < 2) return;
+function renderClientsMarquee() {
+  const root = document.querySelector("[data-clients-marquee]");
+  if (!root || typeof CLIENT_LOGOS === "undefined" || !CLIENT_LOGOS.length) return;
 
-  const pauseBtn = document.querySelector("[data-hero-pause]");
-  let index = slides.findIndex((s) => s.classList.contains("is-active"));
-  if (index < 0) index = 0;
-  let paused = false;
-  let timer = null;
+  const perRow = Math.ceil(CLIENT_LOGOS.length / 4);
+  const rows = [
+    CLIENT_LOGOS.slice(0, perRow),
+    CLIENT_LOGOS.slice(perRow, perRow * 2),
+    CLIENT_LOGOS.slice(perRow * 2, perRow * 3),
+    CLIENT_LOGOS.slice(perRow * 3),
+  ].filter((row) => row.length);
 
-  const show = (next) => {
-    slides[index].classList.remove("is-active");
-    index = (next + slides.length) % slides.length;
-    slides[index].classList.add("is-active");
-  };
-
-  const tick = () => show(index + 1);
-
-  const start = () => {
-    stop();
-    timer = window.setInterval(tick, 6500);
-  };
-
-  const stop = () => {
-    if (timer) window.clearInterval(timer);
-    timer = null;
-  };
-
-  if (pauseBtn) {
-    pauseBtn.addEventListener("click", () => {
-      paused = !paused;
-      pauseBtn.classList.toggle("is-paused", paused);
-      pauseBtn.setAttribute("aria-label", paused ? t("home.resume") : t("home.pause"));
-      pauseBtn.textContent = paused ? "▶" : "‖";
-      if (paused) stop();
-      else start();
-    });
-  }
-
-  start();
+  root.innerHTML = rows
+    .map((row, i) => {
+      const logos = [...row, ...row]
+        .map(
+          (logo) =>
+            `<span class="client-logo"><img src="${logo.src}" alt="${logo.alt}" loading="lazy" decoding="async" /></span>`
+        )
+        .join("");
+      const dir = i % 2 === 0 ? "to-left" : "to-right";
+      return `<div class="clients-track ${dir}" aria-hidden="${i > 0 ? "true" : "false"}">${logos}</div>`;
+    })
+    .join("");
 }
 
 function initContactForm() {
@@ -521,10 +503,10 @@ function initContactForm() {
 document.addEventListener("DOMContentLoaded", () => {
   initChrome();
   applyI18n(getLang());
-  initHeroSlider();
   initTeamDirectory();
   initProfile();
   initContactForm();
+  renderClientsMarquee();
   renderNewsCards();
   renderEventRows();
   renderHomeNews();

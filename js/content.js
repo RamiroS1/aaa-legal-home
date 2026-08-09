@@ -349,3 +349,32 @@ const EVENT_ITEMS = [
     img: "https://aaalegal.com.co/wp-content/uploads/2025/07/Andres-Asobancaria-scaled.jpg",
   },
 ];
+
+/* Client logos from aaalegal.com.co homepage */
+const CLIENT_LOGOS = [
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/06/LOGO-AZUL.png", alt: "Cliente" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/06/Nitrofer-1.png", alt: "Nitrofer" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/06/WhatsApp-Image-2025-05-08-at-10.29.42-AM.jpeg", alt: "Cliente" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-15-at-5.51.50-PM.jpeg", alt: "Cliente" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-15-at-5.51.50-PM-4.jpeg", alt: "Condival" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-15-at-5.51.49-PM.jpeg", alt: "Edicom" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-15-at-5.51.50-PM-1.jpeg", alt: "Idime" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/11/CNR_270.png", alt: "CNR" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/11/10.CARDER_CO.jpg", alt: "Carder" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/11/20182.jpg", alt: "Petromil" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/11/novamed.png", alt: "Novamed" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/11/npv.png", alt: "NPV" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/11/ols.png", alt: "OLS" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/11/pmb.png", alt: "PMB" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/11/upc.png", alt: "UPC" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/12/logo_ecos-1.png", alt: "Ecos" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2025/12/Captura-desde-2025-12-15-12-32-06.png", alt: "Baobab" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2026/01/Logo-COMCE-Fendi-1024x459-2.png", alt: "COMCE" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2026/01/Super-giros.png", alt: "Super Giros" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2026/03/Screenshot-From-2026-03-15-08-50-38.png", alt: "Nitron" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2026/06/puntored-logo1.png", alt: "Puntored" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2026/06/landrental-e1752887416318-300x262-1.jpeg", alt: "Land Rental" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2026/06/corredor-empresarial.png", alt: "Corredor Empresarial" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2026/06/logo-refoenergy-300x155-1.png", alt: "Refoenergy" },
+  { src: "https://aaalegal.com.co/wp-content/uploads/2026/08/images.jpeg", alt: "Klarens" },
+];

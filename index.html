@@ -7,18 +7,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260809-news-4k" />
+    <link rel="stylesheet" href="styles.css?v=20260809-hero-clients" />
   </head>
   <body data-page="home">
     <div data-site-header></div>
 
     <main>
       <section class="hero" aria-label="Portada">
-        <div class="hero-media" aria-hidden="true" data-hero-slider>
-          <img class="is-active" src="hero-bogota-01-4k.jpg" alt="" data-hero-slide />
-          <img src="hero-bogota-02-4k.jpg" alt="" data-hero-slide />
-          <img src="hero-bogota-03-4k.jpg" alt="" data-hero-slide />
-          <img src="hero-bogota-04-4k.jpg" alt="" data-hero-slide />
+        <div class="hero-media" aria-hidden="true">
+          <img
+            class="is-active"
+            src="hero-bogota-02-4k.jpg"
+            alt="Skyline de Bogotá al atardecer"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
         <div class="hero-content">
           <h1 class="hero-brand">
@@ -31,7 +34,6 @@
           </p>
           <a class="btn btn-solid" href="equipo.html" data-i18n="home.cta.team">Conocer el equipo</a>
         </div>
-        <button class="hero-pause" type="button" data-hero-pause data-i18n-aria="home.pause">‖</button>
       </section>
 
       <section class="band" id="firma">
@@ -165,19 +167,12 @@
         </div>
       </section>
 
-      <section class="band-cream">
+      <section class="band-cream" id="clientes">
         <div class="section-head center reveal">
           <p class="eyebrow" data-i18n="home.clients.eyebrow">Algunos de nuestros clientes</p>
           <h2 data-i18n="home.clients.title">Confianza de sectores regulados y empresariales.</h2>
         </div>
-        <div class="clients reveal">
-          <span class="client-chip" data-i18n="home.chip1">Sector financiero</span>
-          <span class="client-chip" data-i18n="home.chip2">Empresas del sector real</span>
-          <span class="client-chip" data-i18n="home.chip3">Inversionistas</span>
-          <span class="client-chip" data-i18n="home.chip4">Entidades públicas</span>
-          <span class="client-chip" data-i18n="home.chip5">Family offices</span>
-          <span class="client-chip" data-i18n="home.chip6">Proyectos inmobiliarios</span>
-        </div>
+        <div class="clients-marquee reveal" data-clients-marquee aria-label="Logos de clientes"></div>
       </section>
 
       <section class="band-light" id="insights">
