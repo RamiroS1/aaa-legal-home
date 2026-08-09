@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n-title="title.contact">Contacto — Ávila Arias & Asociados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260809-glass-aaa" />
+  </head>
+  <body data-page="contacto">
+    <div data-site-header></div>
+    <main>
+      <section class="page-hero">
+        <div class="page-hero-media">
+          <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=2000&q=80" alt="" />
+        </div>
+        <div class="page-hero-content">
+          <h1 data-i18n="contact.hero.title">Contacto</h1>
+          <p data-i18n="contact.hero.lead">Contáctenos hoy. Responderemos su consulta tan pronto como sea posible.</p>
+        </div>
+      </section>
+      <section class="band-light">
+        <div class="contact-grid reveal">
+          <div class="contact-meta">
+            <h2 data-i18n="contact.title">Contactanos hoy</h2>
+            <p><strong>+57 315 2392180</strong></p>
+            <p><a href="mailto:contactenos@aaalegal.com.co">contactenos@aaalegal.com.co</a></p>
+            <p>Calle 94 # 13-42, Bogotá</p>
+            <p style="margin-top:1.5rem;color:var(--muted)">LinkedIn · Instagram · X</p>
+          </div>
+          <form class="form" action="#" method="post" data-contact-form>
+            <label><span data-i18n="contact.name">Nombre</span><input type="text" name="nombre" required /></label>
+            <label><span data-i18n="contact.email">Correo electrónico</span><input type="email" name="email" required /></label>
+            <label><span data-i18n="contact.message">Mensaje</span><textarea name="mensaje" required></textarea></label>
+            <button class="btn btn-solid" type="submit" data-i18n="contact.send">Enviar</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <div data-site-footer></div>
+    <script src="js/i18n.js"></script>
+    <script src="js/site.js"></script>
+  </body>
+</html>

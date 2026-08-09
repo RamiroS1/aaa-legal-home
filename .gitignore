@@ -1,0 +1,22 @@
+# Local / cache
+.vercel/
+hero-4k/
+_deploy/
+_vercel_publish/
+_vercel_pub2/
+_vercel_deploy_args.json
+
+# Unused hero variants (site uses *-4k.jpg only)
+hero-bogota-*-full.png
+hero-bogota-*-sunset.jpg
+hero-bogota-*-plaza.jpg
+hero-bogota-*-dusk.jpg
+hero-bogota-*-colpatria.jpg
+hero-bogota-chapinero.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
