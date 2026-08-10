@@ -482,7 +482,7 @@ function renderClientsMarquee() {
       const logos = [...row, ...row]
         .map(
           (logo) =>
-            `<span class="client-logo"><img src="${logo.src}" alt="${logo.alt}" loading="lazy" decoding="async" /></span>`
+            `<span class="client-logo${logo.plate ? " is-plate" : ""}"><img src="${logo.src}" alt="${logo.alt}" loading="lazy" decoding="async" /></span>`
         )
         .join("");
       const dir = i % 2 === 0 ? "to-left" : "to-right";

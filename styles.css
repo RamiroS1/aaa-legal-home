@@ -790,6 +790,7 @@ body[data-page="home"] .site-header:not(.is-solid) .menu-toggle {
   display: grid;
   place-items: center;
   height: 3.25rem;
+  background: transparent;
 }
 
 .client-logo img {
@@ -798,14 +799,31 @@ body[data-page="home"] .site-header:not(.is-solid) .menu-toggle {
   width: auto;
   max-width: 9.5rem;
   object-fit: contain;
-  filter: grayscale(1) contrast(1.05);
-  opacity: 0.78;
-  transition: opacity 0.25s var(--ease), filter 0.25s var(--ease);
+  background: transparent;
+  /* Soften logos that still have light leftovers; keep brand color on hover */
+  filter: grayscale(0.85) contrast(1.08);
+  opacity: 0.88;
+  transition: opacity 0.25s var(--ease), filter 0.25s var(--ease), transform 0.25s var(--ease);
 }
 
 .client-logo:hover img {
   filter: none;
   opacity: 1;
+  transform: scale(1.06);
+}
+
+/* Logos with white text / dark artwork that need their plate kept */
+.client-logo.is-plate {
+  height: auto;
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.55rem;
+  background: #0b1220;
+}
+
+.client-logo.is-plate img {
+  height: 2.35rem;
+  filter: none;
+  opacity: 0.95;
 }
 
 @keyframes clientsToLeft {
