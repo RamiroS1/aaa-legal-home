@@ -829,4 +829,11 @@ const CLIENT_LOGOS = [
   { src: "clientes/22-corredor-empresarial.png", alt: "Corredor Empresarial" },
   { src: "clientes/23-refoenergy.png", alt: "Refoenergy" },
   { src: "clientes/24-klarens.png", alt: "Klarens", plate: true },
+  { src: "clientes/25-caribe-verde.png", alt: "Unión Temporal Caribe Verde" },
+  { src: "clientes/26-hospital-tocancipa.png", alt: "Hospital Nuestra Señora del Tránsito Tocancipá" },
+  { src: "clientes/27-monet.png", alt: "Monet" },
+  { src: "clientes/28-clinica-asuncion.png", alt: "Clínica La Asunción" },
+  { src: "clientes/29-seguros-capital.png", alt: "Seguros Capital" },
+  { src: "clientes/30-usa-ambiental.png", alt: "USA Ambiental", plate: true },
+  { src: "clientes/31-nueva-logistica.png", alt: "Unión Temporal Nueva Logística" },
 ];
