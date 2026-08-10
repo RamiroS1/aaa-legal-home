@@ -23,3 +23,5 @@ Thumbs.db
 
 # Raw client logo downloads
 clientes/_raw/
+.vercel
+.env*
