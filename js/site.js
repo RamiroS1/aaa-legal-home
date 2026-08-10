@@ -5,6 +5,21 @@ const AREA_I18N = {
   "Administrativo": { es: "Administrativo", en: "Administrative" },
   "Regulación & Riesgo": { es: "Regulación & Riesgo", en: "Regulation & Risk" },
   "Corporativo": { es: "Corporativo", en: "Corporate" },
+  "DDHH": { es: "DDHH", en: "Human Rights" },
+  "DIH": { es: "DIH", en: "IHL" },
+  "Constitucional": { es: "Constitucional", en: "Constitutional" },
+  "Derecho Penal": { es: "Derecho Penal", en: "Criminal Law" },
+  "Extradición": { es: "Extradición", en: "Extradition" },
+  "Cooperación Judicial Internacional": {
+    es: "Cooperación Judicial Internacional",
+    en: "International Judicial Cooperation",
+  },
+  "Derecho comercial y societario": {
+    es: "Derecho comercial y societario",
+    en: "Commercial and Corporate Law",
+  },
+  "Propiedad intelectual": { es: "Propiedad intelectual", en: "Intellectual Property" },
+  "Competencia y consumo": { es: "Competencia y consumo", en: "Competition and Consumer Law" },
 };
 
 const TEAM = [
@@ -26,7 +41,7 @@ const TEAM = [
     name: "Gissela Arias González",
     last: "Arias",
     role: { es: "Socia", en: "Partner" },
-    areas: ["Administrativo", "Regulación & Riesgo", "Compliance"],
+    areas: ["DDHH", "DIH", "Constitucional", "Administrativo"],
     location: "Bogotá",
     photo: "https://aaalegal.com.co/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-02-at-4.08.28-PM.jpeg",
     bio: {
@@ -65,7 +80,7 @@ const TEAM = [
     name: "María Ávila Gaviria",
     last: "Ávila",
     role: { es: "Asociada – Directora de Investigación Criminal", en: "Associate – Criminal Investigation Director" },
-    areas: ["Extinción de Dominio", "Compliance"],
+    areas: ["Derecho Penal", "Extradición", "Cooperación Judicial Internacional"],
     location: "Bogotá / Florida",
     photo: "https://aaalegal.com.co/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-2.06.55-PM.jpeg",
     bio: {
@@ -91,7 +106,7 @@ const TEAM = [
     name: "Gilberto Arias Sarabia",
     last: "Arias",
     role: { es: "Asociado", en: "Associate" },
-    areas: ["Tributario"],
+    areas: ["Tributario", "Extinción de Dominio"],
     location: "Bogotá",
     photo: "https://aaalegal.com.co/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-14-at-9.06.53-PM.jpeg",
     bio: {
@@ -104,7 +119,7 @@ const TEAM = [
     name: "Julian Aldana Arias",
     last: "Aldana",
     role: { es: "Asociado", en: "Associate" },
-    areas: ["Corporativo", "Compliance"],
+    areas: ["Derecho comercial y societario", "Propiedad intelectual", "Competencia y consumo"],
     location: "Bogotá",
     photo: "https://aaalegal.com.co/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-02-at-4.04.57-PM.jpeg",
     bio: {
@@ -138,18 +153,19 @@ function renderNewsCards(limit = null) {
   const grid = document.querySelector("[data-news-grid]");
   if (!grid || typeof NEWS_ITEMS === "undefined") return;
   const lang = getLang();
+  const base = pathPrefix();
   const items = limit ? NEWS_ITEMS.slice(0, limit) : NEWS_ITEMS;
   grid.innerHTML = items
     .map(
       (n) => `
-    <article class="content-card insight reveal is-visible">
-      <a class="insight-media" href="${n.url}" target="_blank" rel="noopener">
-        <img src="${n.img}" alt="" loading="lazy" />
-      </a>
+    <a class="content-card insight reveal is-visible" href="${base}noticias/${n.id}.html">
+      <span class="insight-media">
+        <img src="${n.img}" alt="" loading="lazy"${n.imgPosition ? ` style="object-position: ${n.imgPosition}"` : ""} />
+      </span>
       <time datetime="${n.date}">${localized(n.dateLabel, lang)}</time>
       <h3>${localized(n.title, lang)}</h3>
       <p>${localized(n.body, lang)}</p>
-    </article>`
+    </a>`
     )
     .join("");
 }
@@ -158,17 +174,20 @@ function renderEventRows() {
   const list = document.querySelector("[data-events-list]");
   if (!list || typeof EVENT_ITEMS === "undefined") return;
   const lang = getLang();
+  const base = pathPrefix();
   list.innerHTML = EVENT_ITEMS.map(
     (e) => `
-    <article class="event-row reveal is-visible">
-      <div class="event-thumb"><img src="${e.img}" alt="" loading="lazy" /></div>
-      <div>
+    <a class="event-row reveal is-visible" href="${base}eventos/${e.id}.html">
+      <span class="event-thumb">
+        <img src="${e.img}" alt="" loading="lazy" />
+      </span>
+      <span class="event-copy">
         <time class="meta" datetime="${e.date}">${localized(e.dateLabel, lang)}</time>
         <h3>${localized(e.title, lang)}</h3>
         <p>${localized(e.body, lang)}</p>
-      </div>
-      <span class="meta">${localized(e.place, lang)}</span>
-    </article>`
+      </span>
+      <span class="meta event-place">${localized(e.place, lang)}</span>
+    </a>`
   ).join("");
 }
 
@@ -176,17 +195,18 @@ function renderHomeNews() {
   const grid = document.querySelector("[data-home-news]");
   if (!grid || typeof NEWS_ITEMS === "undefined") return;
   const lang = getLang();
+  const base = pathPrefix();
   grid.innerHTML = NEWS_ITEMS.slice(0, 6)
     .map(
       (n) => `
-    <article class="insight reveal is-visible">
-      <a class="insight-media" href="noticias.html">
-        <img src="${n.img}" alt="" loading="lazy" />
-      </a>
+    <a class="insight reveal is-visible" href="${base}noticias/${n.id}.html">
+      <span class="insight-media">
+        <img src="${n.img}" alt="" loading="lazy"${n.imgPosition ? ` style="object-position: ${n.imgPosition}"` : ""} />
+      </span>
       <time datetime="${n.date}">${localized(n.dateLabel, lang)}</time>
       <h3>${localized(n.title, lang)}</h3>
       <p>${localized(n.body, lang)}</p>
-    </article>`
+    </a>`
     )
     .join("");
 }
@@ -195,17 +215,20 @@ function renderHomeEvents() {
   const list = document.querySelector("[data-home-events]");
   if (!list || typeof EVENT_ITEMS === "undefined") return;
   const lang = getLang();
+  const base = pathPrefix();
   list.innerHTML = EVENT_ITEMS.map(
     (e) => `
-    <article class="event-row">
-      <div class="event-thumb"><img src="${e.img}" alt="" loading="lazy" /></div>
-      <div>
+    <a class="event-row" href="${base}eventos/${e.id}.html">
+      <span class="event-thumb">
+        <img src="${e.img}" alt="" loading="lazy" />
+      </span>
+      <span class="event-copy">
         <time class="meta" datetime="${e.date}">${localized(e.dateLabel, lang)}</time>
         <h3>${localized(e.title, lang)}</h3>
         <p>${localized(e.body, lang)}</p>
-      </div>
-      <a class="btn btn-ghost-dark" href="eventos.html">${t("home.learn", lang)}</a>
-    </article>`
+      </span>
+      <span class="btn btn-ghost-dark event-cta">${t("home.learn", lang)}</span>
+    </a>`
   ).join("");
 }
 
@@ -216,7 +239,14 @@ function areaLabel(area, lang = getLang()) {
 
 function pathPrefix() {
   const parts = location.pathname.split("/").filter(Boolean);
-  if (parts.length >= 2 && parts[parts.length - 2] === "equipo") return "../";
+  if (
+    parts.length >= 2 &&
+    (parts[parts.length - 2] === "equipo" ||
+      parts[parts.length - 2] === "eventos" ||
+      parts[parts.length - 2] === "noticias")
+  ) {
+    return "../";
+  }
   return "";
 }
 
@@ -246,7 +276,7 @@ function renderHeader(active) {
           <a href="${base}areas-practicas.html" class="${active === "areas" ? "is-active" : ""}" data-i18n="nav.areas">Áreas</a>
           <a href="${base}equipo.html" class="${active === "equipo" ? "is-active" : ""}" data-i18n="nav.team">Equipo</a>
           <a href="${base}noticias.html" class="${active === "noticias" ? "is-active" : ""}" data-i18n="nav.insights">Insights</a>
-          <a href="${base}biografia.html" class="${active === "biografia" ? "is-active" : ""}" data-i18n="nav.firm">Firma</a>
+          <a href="${base}biografia.html" class="${active === "biografia" ? "is-active" : ""}" data-i18n="nav.firm">Nuestro Director</a>
         </nav>
         <button class="menu-toggle" type="button" data-menu-toggle data-i18n="nav.menu" data-i18n-aria="nav.menu">Menú</button>
       </div>
@@ -438,6 +468,110 @@ function initTeamDirectory() {
   render();
 }
 
+function initEventDetail() {
+  const root = document.querySelector("[data-event-detail]");
+  if (!root || typeof EVENT_ITEMS === "undefined") return;
+  const id = root.dataset.eventDetail;
+  const event = EVENT_ITEMS.find((e) => e.id === id);
+  if (!event) return;
+  const base = pathPrefix();
+  const gallery = (event.gallery || [])
+    .map((src) => `<img src="${src}" alt="" loading="lazy" />`)
+    .join("");
+
+  function render() {
+    const lang = getLang();
+    const speakerLine = event.speakerRole
+      ? `${localized(event.speaker, lang)} · ${localized(event.speakerRole, lang)}`
+      : localized(event.speaker, lang);
+    const bodyHtml = (localized(event.content, lang) || [])
+      .map((p) => `<p>${p}</p>`)
+      .join("");
+    root.innerHTML = `
+    <section class="page-hero">
+      <div class="page-hero-media">
+        <img src="${event.img}" alt="" style="object-position: ${event.heroPosition || 'center 12%'}" />
+      </div>
+      <div class="page-hero-content">
+        <p class="eyebrow">${localized(event.dateLabel, lang)} · ${localized(event.place, lang)}</p>
+        <h1>${localized(event.title, lang)}</h1>
+      </div>
+    </section>
+    <section class="band-light">
+      <article class="event-detail reveal is-visible">
+        <div class="event-detail-meta">
+          <span><strong>${t("events.speaker", lang)}:</strong> ${speakerLine}</span>
+          <span><strong>${t("events.organizer", lang)}:</strong> ${localized(event.organizer, lang)}</span>
+          <span><strong>${t("events.place", lang)}:</strong> ${localized(event.place, lang)}</span>
+        </div>
+        <p class="event-detail-lead">${localized(event.body, lang)}</p>
+        <div class="event-detail-body">${bodyHtml}</div>
+        ${gallery ? `<div class="event-detail-gallery">${gallery}</div>` : ""}
+        <div class="event-detail-actions">
+          ${
+            event.url
+              ? `<a class="btn btn-solid" href="${event.url}" target="_blank" rel="noopener noreferrer">${t("events.official", lang)}</a>`
+              : ""
+          }
+          <a class="btn btn-ghost-dark" href="${base}eventos.html">${t("events.back", lang)}</a>
+        </div>
+      </article>
+    </section>`;
+    document.title = `${localized(event.title, lang)} — Ávila Arias & Asociados`;
+  }
+
+  window.addEventListener("aaa:langchange", render);
+  render();
+}
+
+function initNewsDetail() {
+  const root = document.querySelector("[data-news-detail]");
+  if (!root || typeof NEWS_ITEMS === "undefined") return;
+  const id = root.dataset.newsDetail;
+  const news = NEWS_ITEMS.find((n) => n.id === id);
+  if (!news) return;
+  const base = pathPrefix();
+  const gallery = (news.gallery || [])
+    .map((src) => `<img src="${src}" alt="" loading="lazy" />`)
+    .join("");
+
+  function render() {
+    const lang = getLang();
+    const bodyHtml = (localized(news.content, lang) || [])
+      .map((p) => `<p>${p}</p>`)
+      .join("");
+    root.innerHTML = `
+    <section class="page-hero">
+      <div class="page-hero-media">
+        <img src="${news.img}" alt="" style="object-position: ${news.heroPosition || news.imgPosition || "center 18%"}" />
+      </div>
+      <div class="page-hero-content">
+        <p class="eyebrow">${localized(news.dateLabel, lang)}</p>
+        <h1>${localized(news.title, lang)}</h1>
+      </div>
+    </section>
+    <section class="band-light">
+      <article class="event-detail reveal is-visible">
+        <p class="event-detail-lead">${localized(news.body, lang)}</p>
+        <div class="event-detail-body">${bodyHtml}</div>
+        ${gallery ? `<div class="event-detail-gallery">${gallery}</div>` : ""}
+        <div class="event-detail-actions">
+          ${
+            news.url
+              ? `<a class="btn btn-solid" href="${news.url}" target="_blank" rel="noopener noreferrer">${t("news.official", lang)}</a>`
+              : ""
+          }
+          <a class="btn btn-ghost-dark" href="${base}noticias.html">${t("news.back", lang)}</a>
+        </div>
+      </article>
+    </section>`;
+    document.title = `${localized(news.title, lang)} — Ávila Arias & Asociados`;
+  }
+
+  window.addEventListener("aaa:langchange", render);
+  render();
+}
+
 function initProfile() {
   const root = document.querySelector("[data-profile]");
   if (!root) return;
@@ -469,12 +603,11 @@ function renderClientsMarquee() {
   const root = document.querySelector("[data-clients-marquee]");
   if (!root || typeof CLIENT_LOGOS === "undefined" || !CLIENT_LOGOS.length) return;
 
-  const perRow = Math.ceil(CLIENT_LOGOS.length / 4);
+  const perRow = Math.ceil(CLIENT_LOGOS.length / 3);
   const rows = [
     CLIENT_LOGOS.slice(0, perRow),
     CLIENT_LOGOS.slice(perRow, perRow * 2),
-    CLIENT_LOGOS.slice(perRow * 2, perRow * 3),
-    CLIENT_LOGOS.slice(perRow * 3),
+    CLIENT_LOGOS.slice(perRow * 2),
   ].filter((row) => row.length);
 
   root.innerHTML = rows
@@ -500,11 +633,33 @@ function initContactForm() {
   });
 }
 
+function initHeroSlideshow() {
+  const root = document.querySelector("[data-hero-slideshow]");
+  if (!root) return;
+  const slides = Array.from(root.querySelectorAll("img"));
+  if (slides.length < 2) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let index = slides.findIndex((img) => img.classList.contains("is-active"));
+  if (index < 0) index = 0;
+  slides.forEach((img, i) => img.classList.toggle("is-active", i === index));
+
+  const intervalMs = 7000;
+  setInterval(() => {
+    slides[index].classList.remove("is-active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("is-active");
+  }, intervalMs);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initChrome();
   applyI18n(getLang());
+  initHeroSlideshow();
   initTeamDirectory();
   initProfile();
+  initEventDetail();
+  initNewsDetail();
   initContactForm();
   renderClientsMarquee();
   renderNewsCards();

@@ -7,19 +7,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260809-hero-clients" />
+    <link rel="stylesheet" href="styles.css?v=20260810-hero-xfade" />
   </head>
   <body data-page="home">
     <div data-site-header></div>
 
     <main>
       <section class="hero" aria-label="Portada">
-        <div class="hero-media" aria-hidden="true">
+        <div class="hero-media" data-hero-slideshow aria-hidden="true">
           <img
             class="is-active"
             src="hero-bogota-02-4k.jpg"
             alt="Skyline de Bogotá al atardecer"
             fetchpriority="high"
+            decoding="async"
+          />
+          <img
+            src="hero-bogota-05-colpatria-flag.jpg"
+            alt="Centro Internacional de Bogotá con la Torre Colpatria iluminada"
+            loading="eager"
             decoding="async"
           />
         </div>
@@ -46,7 +52,7 @@
               grandes oficinas y la cercanía que cada cliente merece. Desde
               2022 · Bogotá, Colombia.
             </p>
-            <a class="btn btn-ghost" href="biografia.html" data-i18n="home.who.cta">Conocer la firma</a>
+            <a class="btn btn-ghost" href="biografia.html" data-i18n="home.who.cta">Conocer al Director</a>
           </article>
           <div class="panel panel-photo">
             <img
@@ -66,23 +72,39 @@
         <div class="pillars reveal">
           <article class="pillar">
             <div class="num">01</div>
-            <h3 data-i18n="home.p1.title">Regulación Financiera</h3>
-            <p data-i18n="home.p1.body">Conocimiento técnico de marcos regulatorios del sector financiero y su impacto en modelos de negocio.</p>
+            <h3 data-i18n="home.p1.title">Reconstrucción fáctica</h3>
+            <p data-i18n="home.p1.body">Ningún concepto se emite antes de haber reconstruido el expediente, la operación y las cifras. El estudio no se limita al problema planteado: se examinan las variables tributarias, administrativas, societarias y contractuales que puedan incidir en el resultado, incluidas las que el cliente no anticipó al consultar.</p>
           </article>
           <article class="pillar">
             <div class="num">02</div>
-            <h3 data-i18n="home.p2.title">Análisis Normativo</h3>
-            <p data-i18n="home.p2.body">Estudios y conceptos económicos aplicados al cumplimiento normativo y a la gestión de riesgos legales.</p>
+            <h3 data-i18n="home.p2.title">Control adversarial interno</h3>
+            <p data-i18n="home.p2.body">Antes de salir de la firma, cada concepto y cada escrito se somete a la lectura de quien tendría que rechazarlo: el juez, el funcionario, la contraparte. Las objeciones se identifican y se responden dentro del documento.</p>
           </article>
           <article class="pillar">
             <div class="num">03</div>
-            <h3 data-i18n="home.p3.title">Derecho Penal &amp; Compliance</h3>
-            <p data-i18n="home.p3.body">Prevención de lavado de activos, extinción de dominio y derecho penal económico, tributario y civil.</p>
+            <h3 data-i18n="home.p3.title">Medición del impacto económico</h3>
+            <p data-i18n="home.p3.body">El cliente debe saber cuánto cuesta cada camino, qué contingencia asume y en qué plazo se materializa. Una opinión jurídica que no permita calcular su efecto sobre el negocio está incompleta.</p>
           </article>
           <article class="pillar">
             <div class="num">04</div>
-            <h3 data-i18n="home.p4.title">Cercanía con el Cliente</h3>
-            <p data-i18n="home.p4.body">Filosofía de trabajo basada en cercanía y entendimiento profundo de las necesidades del cliente.</p>
+            <h3 data-i18n="home.p4.title">Lealtad profesional</h3>
+            <p data-i18n="home.p4.body">El deber con el cliente se cumple diciéndole lo que necesita saber, no lo que espera oír. La firma declina el asunto cuando existe conflicto de intereses, advierte cuando la vía que se le pide no es la que conviene y responde por los plazos que asume. La reserva sobre la información recibida no termina con el encargo.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band" id="mision-vision">
+        <div class="panel-row reveal">
+          <article class="panel panel-paper panel-pointer panel-pointer-right">
+            <p class="eyebrow" data-i18n="home.mission.eyebrow">Misión</p>
+            <h2 data-i18n="home.mission.title">Criterio jurídico para decisiones difíciles.</h2>
+            <p data-i18n="home.mission.body">Acompañamos a empresas, inversionistas y entidades en asuntos donde el margen de error es estrecho: discusiones tributarias y aduaneras, extinción de dominio, compliance y estructuración de operaciones. Nuestro trabajo consiste en anticipar cómo será examinada cada decisión antes de que el cliente la adopte, y en entregarle el criterio jurídico y las cifras necesarias para tomarla con pleno conocimiento de sus consecuencias.</p>
+          </article>
+          <article class="panel panel-gold">
+            <p class="eyebrow" data-i18n="home.vision.eyebrow">Visión</p>
+            <h2 data-i18n="home.vision.title">Liderazgo en Colombia hacia 2027.</h2>
+            <p data-i18n="home.vision.body">En el 2027 Ávila Arias &amp; Asociados liderará la prestación de servicios de consultoría y asesoría especializada en Colombia y se posicionará como una de las mejores y más eficientes firmas en el mercado.</p>
+            <a class="btn btn-ghost" href="contacto.html" data-i18n="home.vision.cta">Conversemos</a>
           </article>
         </div>
       </section>
@@ -90,7 +112,7 @@
       <section class="band-cream" id="areas">
         <div class="section-head center reveal">
           <p class="eyebrow" data-i18n="home.areas.eyebrow">Áreas de práctica</p>
-          <h2 data-i18n="home.areas.title" data-i18n-html>Soluciones jurídicas <em>integrales</em></h2>
+          <h2 data-i18n="home.areas.title">Soluciones jurídicas integrales</h2>
           <p data-i18n="home.areas.body">Nueve áreas para acompañar a empresas, instituciones y personas en sus decisiones más relevantes.</p>
         </div>
         <div class="area-pills reveal">
@@ -151,22 +173,6 @@
         </div>
       </section>
 
-      <section class="band">
-        <div class="panel-row reveal">
-          <article class="panel panel-paper panel-pointer panel-pointer-right">
-            <p class="eyebrow" data-i18n="home.mission.eyebrow">Misión</p>
-            <h2 data-i18n="home.mission.title">Asesoría especializada con trayectoria.</h2>
-            <p data-i18n="home.mission.body">Consultoría en inmobiliario, compliance, debida diligencia, corporativo, tributario y aduanero, con soluciones confiables y cumplimiento garantizado.</p>
-          </article>
-          <article class="panel panel-gold">
-            <p class="eyebrow" data-i18n="home.vision.eyebrow">Visión</p>
-            <h2 data-i18n="home.vision.title">Liderar en Colombia hacia 2027.</h2>
-            <p data-i18n="home.vision.body">Posicionarnos como una de las firmas más eficientes del mercado en consultoría y asesoría especializada.</p>
-            <a class="btn btn-ghost" href="contacto.html" data-i18n="home.vision.cta">Conversemos</a>
-          </article>
-        </div>
-      </section>
-
       <section class="band-cream" id="clientes">
         <div class="section-head center reveal">
           <p class="eyebrow" data-i18n="home.clients.eyebrow">Algunos de nuestros clientes</p>
@@ -194,15 +200,6 @@
         <div class="events-list reveal" data-home-events></div>
       </section>
 
-      <section class="stats" aria-label="Indicadores">
-        <div class="stats-inner reveal">
-          <h2 data-i18n="home.stats.title">Escala local con profundidad técnica.</h2>
-          <div class="stat"><strong>9</strong><span data-i18n="home.stat1">Áreas de práctica</span></div>
-          <div class="stat"><strong>4</strong><span data-i18n="home.stat2">Pilares de la firma</span></div>
-          <div class="stat"><strong>2022</strong><span data-i18n="home.stat3">Fundación · Bogotá</span></div>
-        </div>
-      </section>
-
       <section class="band-navy">
         <div class="section-head center reveal">
           <p class="eyebrow" data-i18n="home.cta.eyebrow">Contacto</p>
@@ -216,8 +213,8 @@
     </main>
 
     <div data-site-footer></div>
-    <script src="js/i18n.js"></script>
-    <script src="js/content.js"></script>
-    <script src="js/site.js"></script>
+    <script src="js/i18n.js?v=20260810-news-detail"></script>
+    <script src="js/content.js?v=20260810-news-detail"></script>
+    <script src="js/site.js?v=20260810-hero-xfade"></script>
   </body>
 </html>
