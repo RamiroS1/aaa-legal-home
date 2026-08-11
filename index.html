@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260810-hero-xfade" />
+    <link rel="stylesheet" href="styles.css?v=20260810-videos" />
   </head>
   <body data-page="home">
     <div data-site-header></div>
@@ -160,17 +160,12 @@
         </div>
       </section>
 
-      <section class="band-light">
+      <section class="band-light" id="impacto">
         <div class="section-head center reveal">
-          <p class="eyebrow" data-i18n="home.results.eyebrow">Resultados</p>
-          <h2 data-i18n="home.results.title">Impacto medible en asuntos complejos.</h2>
+          <p class="eyebrow" data-i18n="home.results.eyebrow">Impacto medible</p>
+          <h2 data-i18n="home.results.title">Resultados con cifra, no solo criterio.</h2>
         </div>
-        <div class="metrics reveal">
-          <div class="metric"><strong>12%</strong><span data-i18n="home.m1">Tasa de éxito en devoluciones de impuestos</span></div>
-          <div class="metric"><strong>4.025M+</strong><span data-i18n="home.m2">Activos discutidos en extinción de dominio</span></div>
-          <div class="metric"><strong>MM+</strong><span data-i18n="home.m3">Ahorros en planeación tributaria</span></div>
-          <div class="metric"><strong>9</strong><span data-i18n="home.m4">Áreas de práctica especializadas</span></div>
-        </div>
+        <div class="metrics reveal" data-impact-metrics></div>
       </section>
 
       <section class="band-cream" id="clientes">
@@ -178,7 +173,7 @@
           <p class="eyebrow" data-i18n="home.clients.eyebrow">Algunos de nuestros clientes</p>
           <h2 data-i18n="home.clients.title">Confianza de sectores regulados y empresariales.</h2>
         </div>
-        <div class="clients-marquee reveal" data-clients-marquee aria-label="Logos de clientes"></div>
+        <div class="clients-showcase reveal" data-clients-showcase></div>
       </section>
 
       <section class="band-light" id="insights">
@@ -200,21 +195,68 @@
         <div class="events-list reveal" data-home-events></div>
       </section>
 
+      <section class="band-light" id="redes" data-social-videos>
+        <div class="section-head center reveal">
+          <p class="eyebrow" data-i18n="home.social.eyebrow">Redes sociales</p>
+          <h2 data-i18n="home.social.title">Síganos y conozca el criterio de la firma.</h2>
+          <p data-i18n="home.social.lead">Contenido reciente de nuestros canales. Los videos se reproducen en silencio; active el audio cuando quiera.</p>
+        </div>
+        <div class="social-video-grid reveal">
+          <figure class="social-video">
+            <div class="social-video-frame">
+              <video
+                muted
+                playsinline
+                loop
+                preload="metadata"
+                data-social-video
+                src="videos/andres-avila-dian-web.mp4"
+              ></video>
+              <button type="button" class="social-video-sound" data-video-sound aria-pressed="false">
+                <span data-i18n="home.social.unmute">Activar sonido</span>
+              </button>
+            </div>
+            <figcaption data-i18n="home.social.v1">Andrés Ávila · DIAN</figcaption>
+          </figure>
+          <figure class="social-video">
+            <div class="social-video-frame">
+              <video
+                muted
+                playsinline
+                loop
+                preload="metadata"
+                data-social-video
+                src="videos/firma-redes-web.mp4"
+              ></video>
+              <button type="button" class="social-video-sound" data-video-sound aria-pressed="false">
+                <span data-i18n="home.social.unmute">Activar sonido</span>
+              </button>
+            </div>
+            <figcaption data-i18n="home.social.v2">Ávila Arias &amp; Asociados</figcaption>
+          </figure>
+        </div>
+        <div class="social-follow reveal">
+          <a class="btn btn-ghost-dark" href="https://www.linkedin.com/company/avila-arias-asociados" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn btn-ghost-dark" href="https://www.instagram.com/triplealegal/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </section>
+
       <section class="band-navy">
         <div class="section-head center reveal">
           <p class="eyebrow" data-i18n="home.cta.eyebrow">Contacto</p>
           <h2 data-i18n="home.cta.title">Conversemos sobre su próximo asunto.</h2>
-          <p data-i18n="home.cta.body">Agende una sesión de diagnóstico confidencial. Análisis preliminar de oportunidades y riesgos aplicables a su sector.</p>
-          <div style="margin-top: 1rem">
-            <a class="btn btn-solid" href="contacto.html" style="background:#fff;color:#101218" data-i18n="home.cta.btn">Agendar consulta</a>
+          <p data-i18n="home.cta.body">Puede agendar una sesión de diagnóstico confidencial o enviarnos una consulta general. Responderemos con criterio y a la mayor brevedad.</p>
+          <div class="cta-actions">
+            <a class="btn btn-solid" href="contacto.html#consulta" style="background:#fff;color:#101218" data-i18n="home.cta.btn">Agendar consulta</a>
+            <a class="btn btn-ghost" href="contacto.html#consulta" data-i18n="home.cta.inquire">Consulta general</a>
           </div>
         </div>
       </section>
     </main>
 
     <div data-site-footer></div>
-    <script src="js/i18n.js?v=20260810-news-detail"></script>
-    <script src="js/content.js?v=20260810-clients-new"></script>
-    <script src="js/site.js?v=20260810-hero-xfade"></script>
+    <script src="js/i18n.js?v=20260810-videos"></script>
+    <script src="js/content.js?v=20260810-videos"></script>
+    <script src="js/site.js?v=20260810-videos"></script>
   </body>
 </html>

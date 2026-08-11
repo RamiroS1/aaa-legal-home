@@ -320,6 +320,11 @@ function renderFooter() {
         <a href="mailto:contactenos@aaalegal.com.co">contactenos@aaalegal.com.co</a>
         <p>+57 315 2392180</p>
         <p>Calle 94 # 13-42, Bogotá</p>
+        <p class="footer-social-label" data-i18n="footer.social">Redes</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/company/avila-arias-asociados" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/triplealegal/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -599,29 +604,87 @@ function initProfile() {
   render();
 }
 
-function renderClientsMarquee() {
-  const root = document.querySelector("[data-clients-marquee]");
+const CLIENTS_MARQUEE_LIMIT = 10;
+
+function clientLogoMarkup(logo) {
+  return `<span class="client-logo${logo.plate ? " is-plate" : ""}"><img src="${logo.src}" alt="${logo.alt}" loading="lazy" decoding="async" /></span>`;
+}
+
+function filterClientLogos(sector) {
+  if (!sector || sector === "all") return CLIENT_LOGOS.slice();
+  return CLIENT_LOGOS.filter((logo) => logo.sector === sector);
+}
+
+function initClientsShowcase() {
+  const root = document.querySelector("[data-clients-showcase]");
   if (!root || typeof CLIENT_LOGOS === "undefined" || !CLIENT_LOGOS.length) return;
 
-  const perRow = Math.ceil(CLIENT_LOGOS.length / 3);
-  const rows = [
-    CLIENT_LOGOS.slice(0, perRow),
-    CLIENT_LOGOS.slice(perRow, perRow * 2),
-    CLIENT_LOGOS.slice(perRow * 2),
-  ].filter((row) => row.length);
+  const state = { sector: "all", expanded: false };
+  const sectors = typeof CLIENT_SECTORS !== "undefined" ? CLIENT_SECTORS : [];
 
-  root.innerHTML = rows
-    .map((row, i) => {
-      const logos = [...row, ...row]
-        .map(
-          (logo) =>
-            `<span class="client-logo${logo.plate ? " is-plate" : ""}"><img src="${logo.src}" alt="${logo.alt}" loading="lazy" decoding="async" /></span>`
-        )
-        .join("");
-      const dir = i % 2 === 0 ? "to-left" : "to-right";
-      return `<div class="clients-track ${dir}" aria-hidden="${i > 0 ? "true" : "false"}">${logos}</div>`;
-    })
-    .join("");
+  function render() {
+    const lang = getLang();
+    const filtered = filterClientLogos(state.sector);
+    const limit =
+      filtered.length > CLIENTS_MARQUEE_LIMIT ? CLIENTS_MARQUEE_LIMIT : filtered.length;
+    const marqueeLogos = filtered.slice(0, limit);
+    const restCount = Math.max(0, filtered.length - limit);
+    const canExpand = restCount > 0;
+
+    if (!canExpand) state.expanded = false;
+
+    const filterHtml = `
+      <div class="clients-filters" role="group" aria-label="${t("home.clients.eyebrow", lang)}">
+        <button type="button" data-client-sector="all" class="${state.sector === "all" ? "is-active" : ""}">${t("home.clients.all", lang)}</button>
+        ${sectors
+          .map(
+            (s) =>
+              `<button type="button" data-client-sector="${s}" class="${state.sector === s ? "is-active" : ""}">${t(`home.clients.sector.${s}`, lang)}</button>`
+          )
+          .join("")}
+      </div>`;
+
+    const trackLogos = [...marqueeLogos, ...marqueeLogos].map(clientLogoMarkup).join("");
+    const marqueeHtml = `
+      <div class="clients-marquee" aria-label="${t("home.clients.eyebrow", lang)}">
+        <div class="clients-track to-left">${trackLogos}</div>
+      </div>`;
+
+    const gridHtml =
+      state.expanded && canExpand
+        ? `<div class="clients-grid" data-clients-grid>
+            ${filtered.slice(limit).map(clientLogoMarkup).join("")}
+          </div>`
+        : "";
+
+    const actionsHtml = canExpand
+      ? `<div class="clients-actions">
+          <button type="button" class="btn btn-ghost-dark" data-clients-toggle>
+            ${state.expanded ? t("home.clients.collapse", lang) : `${t("home.clients.expand", lang)} (${restCount})`}
+          </button>
+        </div>`
+      : "";
+
+    root.innerHTML = `${filterHtml}${marqueeHtml}${gridHtml}${actionsHtml}`;
+
+    root.querySelectorAll("[data-client-sector]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const next = btn.dataset.clientSector;
+        if (state.sector === next) return;
+        state.sector = next;
+        state.expanded = false;
+        render();
+      });
+    });
+
+    root.querySelector("[data-clients-toggle]")?.addEventListener("click", () => {
+      state.expanded = !state.expanded;
+      render();
+    });
+  }
+
+  window.addEventListener("aaa:langchange", render);
+  render();
 }
 
 function initContactForm() {
@@ -652,6 +715,169 @@ function initHeroSlideshow() {
   }, intervalMs);
 }
 
+function formatImpactNumber(value) {
+  return Math.round(value)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function formatImpactMetric(metric, value) {
+  return `${metric.prefix || ""}${formatImpactNumber(value)}${metric.suffix || ""}`;
+}
+
+function animateImpactValue(el, metric, delay = 0) {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const strong = el.querySelector("[data-impact-value]");
+  if (!strong) return;
+
+  if (reduce) {
+    strong.textContent = formatImpactMetric(metric, metric.value);
+    return;
+  }
+
+  const duration = 1400;
+  const start = performance.now() + delay;
+  el.classList.add("is-counting");
+
+  function frame(now) {
+    if (now < start) {
+      requestAnimationFrame(frame);
+      return;
+    }
+    const t = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const current = metric.value * eased;
+    strong.textContent = formatImpactMetric(metric, current);
+    if (t < 1) {
+      requestAnimationFrame(frame);
+    } else {
+      strong.textContent = formatImpactMetric(metric, metric.value);
+      el.classList.remove("is-counting");
+    }
+  }
+
+  strong.textContent = formatImpactMetric(metric, 0);
+  requestAnimationFrame(frame);
+}
+
+function initImpactMetrics() {
+  const root = document.querySelector("[data-impact-metrics]");
+  if (!root || typeof IMPACT_METRICS === "undefined") return;
+
+  let started = false;
+
+  function renderLabels() {
+    const lang = getLang();
+    root.querySelectorAll("[data-impact-label]").forEach((el, i) => {
+      const metric = IMPACT_METRICS[i];
+      if (metric) el.textContent = localized(metric.label, lang);
+    });
+  }
+
+  root.innerHTML = IMPACT_METRICS.map(
+    (metric, i) => `
+    <div class="metric" data-impact-item="${i}">
+      <strong data-impact-value>${formatImpactMetric(metric, 0)}</strong>
+      <span data-impact-label>${localized(metric.label)}</span>
+    </div>`
+  ).join("");
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || started) return;
+        started = true;
+        root.querySelectorAll("[data-impact-item]").forEach((el, i) => {
+          animateImpactValue(el, IMPACT_METRICS[i], i * 90);
+        });
+        io.disconnect();
+      });
+    },
+    { threshold: 0.35 }
+  );
+
+  io.observe(root);
+  window.addEventListener("aaa:langchange", renderLabels);
+}
+
+function initSocialVideos() {
+  const root = document.querySelector("[data-social-videos]");
+  if (!root) return;
+
+  const videos = Array.from(root.querySelectorAll("[data-social-video]"));
+  if (!videos.length) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function setSoundLabel(btn, unmuted) {
+    const label = btn.querySelector("span") || btn;
+    label.textContent = t(unmuted ? "home.social.mute" : "home.social.unmute");
+    btn.setAttribute("aria-pressed", unmuted ? "true" : "false");
+  }
+
+  function muteAllExcept(except) {
+    videos.forEach((video) => {
+      if (video === except) return;
+      video.muted = true;
+      const btn = video.closest(".social-video-frame")?.querySelector("[data-video-sound]");
+      if (btn) setSoundLabel(btn, false);
+    });
+  }
+
+  root.querySelectorAll("[data-video-sound]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const video = btn.closest(".social-video-frame")?.querySelector("[data-social-video]");
+      if (!video) return;
+      const willUnmute = video.muted;
+      if (willUnmute) muteAllExcept(video);
+      video.muted = !willUnmute;
+      setSoundLabel(btn, willUnmute);
+      try {
+        await video.play();
+      } catch (_) {
+        /* autoplay policies may still block until gesture; click itself is the gesture */
+      }
+    });
+  });
+
+  window.addEventListener("aaa:langchange", () => {
+    root.querySelectorAll("[data-video-sound]").forEach((btn) => {
+      const pressed = btn.getAttribute("aria-pressed") === "true";
+      setSoundLabel(btn, pressed);
+    });
+  });
+
+  if (reduceMotion) {
+    videos.forEach((video) => {
+      video.removeAttribute("autoplay");
+      video.pause();
+    });
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+          if (!video.dataset.started) {
+            video.muted = true;
+            video.dataset.started = "1";
+            const btn = video.closest(".social-video-frame")?.querySelector("[data-video-sound]");
+            if (btn) setSoundLabel(btn, false);
+          }
+          video.play().catch(() => {});
+        } else if (!entry.isIntersecting) {
+          video.pause();
+        }
+      });
+    },
+    { threshold: [0, 0.45, 0.7] }
+  );
+
+  videos.forEach((video) => io.observe(video));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initChrome();
   applyI18n(getLang());
@@ -661,7 +887,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initEventDetail();
   initNewsDetail();
   initContactForm();
-  renderClientsMarquee();
+  initClientsShowcase();
+  initImpactMetrics();
+  initSocialVideos();
   renderNewsCards();
   renderEventRows();
   renderHomeNews();
