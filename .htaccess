@@ -1,0 +1,17 @@
+Options -Indexes -MultiViews
+RewriteEngine On
+DirectoryIndex index.html
+DirectorySlash Off
+
+RewriteRule ^noticias/gissela-columbia(\.html)?/?$ - [G,L]
+RewriteRule ^equipo/gissela-arias(\.html)?/?$ - [G,L]
+
+RewriteRule ^equipo/?$ equipo.html [L]
+RewriteRule ^eventos/?$ eventos.html [L]
+RewriteRule ^noticias/?$ noticias.html [L]
+RewriteRule ^articulos/?$ articulos.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]

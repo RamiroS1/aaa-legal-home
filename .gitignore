@@ -25,3 +25,8 @@ Thumbs.db
 clientes/_raw/
 .vercel
 .env*
+
+# Generated deploy packages
+aaa-legal-completo-*/
+aaa-legal-completo-*.zip
+aaa-legal-deploy-*/

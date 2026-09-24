@@ -522,6 +522,12 @@ body[data-page="home"] .site-header:not(.is-solid) .menu-toggle {
   color: var(--ink);
 }
 
+.page-hero-plain {
+  min-height: 0;
+  padding-top: 8rem;
+  padding-bottom: 2.5rem;
+}
+
 .page-hero-media {
   position: absolute;
   inset: 0;
@@ -1194,6 +1200,40 @@ a.event-row:hover h3 {
   margin: 0 0 1rem;
   color: var(--ink-soft);
   line-height: 1.7;
+}
+
+.event-detail-body h2 {
+  margin: 1.75rem 0 0.7rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.news-table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1.35rem;
+}
+
+.news-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.news-table th,
+.news-table td {
+  border: 1px solid var(--line);
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.news-table th {
+  background: #f3f1eb;
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .event-detail-gallery {

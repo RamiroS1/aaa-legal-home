@@ -30,23 +30,10 @@ const TEAM = [
     role: { es: "Director Ejecutivo", en: "Managing Director" },
     areas: ["Tributario", "Compliance", "Extinción de Dominio", "Administrativo"],
     location: "Bogotá",
-    photo: "https://aaalegal.com.co/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-14-at-9.06.51-PM.jpeg",
+    photo: "equipo/fotos/andres-avila.jpg",
     bio: {
       es: "Abogado y especialista en Derecho Constitucional, con más de 15 años de experiencia en entidades del sector público, con énfasis en impuestos y aduanas, administración de activos, políticas anti-lavado, compliance y compras públicas.",
       en: "Attorney and Constitutional Law specialist with more than 15 years of experience in public-sector entities, focused on tax and customs, asset administration, AML policy, compliance, and public procurement.",
-    },
-  },
-  {
-    id: "gissela-arias",
-    name: "Gissela Arias González",
-    last: "Arias",
-    role: { es: "Socia", en: "Partner" },
-    areas: ["DDHH", "DIH", "Constitucional", "Administrativo"],
-    location: "Bogotá",
-    photo: "https://aaalegal.com.co/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-02-at-4.08.28-PM.jpeg",
-    bio: {
-      es: "Abogada y especialista en Derecho Público, Magíster en Gobierno y Políticas Públicas, candidata a LL.M. de Columbia University. 15 años en análisis y divulgación de políticas públicas.",
-      en: "Attorney and Public Law specialist, Master in Government and Public Policy, LL.M. candidate at Columbia University. 15 years analyzing and communicating public policy.",
     },
   },
   {
@@ -56,7 +43,7 @@ const TEAM = [
     role: { es: "Asociado – Director de Impuestos", en: "Associate – Tax Director" },
     areas: ["Tributario"],
     location: "Bogotá",
-    photo: "https://aaalegal.com.co/wp-content/uploads/2025/11/Foto.png",
+    photo: "equipo/fotos/silvio-benavides.png",
     bio: {
       es: "Abogado y especialista en Derecho Tributario, con más de diez años de experiencia en análisis, interpretación y aplicación de la normativa tributaria y de hacienda pública.",
       en: "Attorney and Tax Law specialist with more than ten years of experience analyzing, interpreting, and applying tax and public-finance rules.",
@@ -69,7 +56,7 @@ const TEAM = [
     role: { es: "Directora Operativa", en: "Operations Director" },
     areas: ["Corporativo", "Compliance"],
     location: "Bogotá",
-    photo: "https://aaalegal.com.co/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-14-at-9.06.51-PM-1.jpeg",
+    photo: "equipo/fotos/andrea-trejos.jpg",
     bio: {
       es: "Abogada y especialista en Derecho Comercial, con énfasis en derecho societario, manejo de riesgos y cumplimiento normativo.",
       en: "Attorney and Commercial Law specialist focused on corporate law, risk management, and regulatory compliance.",
@@ -82,7 +69,7 @@ const TEAM = [
     role: { es: "Asociada – Directora de Investigación Criminal", en: "Associate – Criminal Investigation Director" },
     areas: ["Derecho Penal", "Extradición", "Cooperación Judicial Internacional"],
     location: "Bogotá / Florida",
-    photo: "https://aaalegal.com.co/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-2.06.55-PM.jpeg",
+    photo: "equipo/fotos/maria-avila.jpg",
     bio: {
       es: "Abogada admitida al ejercicio profesional en el Estado de Florida. Experiencia en Criminal Law, extradición e investigación criminal.",
       en: "Attorney admitted to practice in the State of Florida. Experience in criminal law, extradition, and criminal investigation.",
@@ -95,7 +82,7 @@ const TEAM = [
     role: { es: "Asociado", en: "Associate" },
     areas: ["Extinción de Dominio", "Administrativo"],
     location: "Bogotá",
-    photo: "https://aaalegal.com.co/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-14-at-9.06.50-PM.jpeg",
+    photo: "equipo/fotos/carlos-urbina.jpg",
     bio: {
       es: "Especialista en derecho sancionador, disciplinario, responsabilidad fiscal y extinción de dominio.",
       en: "Specialist in sanctioning, disciplinary, fiscal liability, and asset-forfeiture law.",
@@ -108,7 +95,7 @@ const TEAM = [
     role: { es: "Asociado", en: "Associate" },
     areas: ["Tributario", "Extinción de Dominio"],
     location: "Bogotá",
-    photo: "https://aaalegal.com.co/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-14-at-9.06.53-PM.jpeg",
+    photo: "equipo/fotos/gilberto-arias.jpg",
     bio: {
       es: "Enfoque en asesoría y defensa en procedimientos sancionatorios fiscales y gestión de riesgos impositivos.",
       en: "Focused on advice and defense in tax sanctioning proceedings and tax-risk management.",
@@ -121,7 +108,7 @@ const TEAM = [
     role: { es: "Asociado", en: "Associate" },
     areas: ["Derecho comercial y societario", "Propiedad intelectual", "Competencia y consumo"],
     location: "Bogotá",
-    photo: "https://aaalegal.com.co/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-02-at-4.04.57-PM.jpeg",
+    photo: "equipo/fotos/julian-aldana.jpg",
     bio: {
       es: "Asesoría empresarial, estructuración societaria, compliance y propiedad intelectual.",
       en: "Business advisory, corporate structuring, compliance, and intellectual property.",
@@ -134,7 +121,7 @@ const TEAM = [
     role: { es: "Asociado – Legal Tech", en: "Associate – Legal Tech" },
     areas: ["Regulación & Riesgo", "Corporativo"],
     location: "Bogotá",
-    photo: "https://aaalegal.com.co/wp-content/uploads/2026/05/WhatsApp-Image-2026-04-24-at-7.14.50-AM.jpeg",
+    photo: "equipo/fotos/ramiro-avila.jpg",
     bio: {
       es: "Ingeniero de Sistemas con enfoque en Legal Tech, automatización de procesos legales e IA aplicada al derecho.",
       en: "Systems engineer focused on Legal Tech, legal-process automation, and AI applied to law.",
@@ -160,7 +147,7 @@ function renderNewsCards(limit = null) {
       (n) => `
     <a class="content-card insight reveal is-visible" href="${base}noticias/${n.id}.html">
       <span class="insight-media">
-        <img src="${n.img}" alt="" loading="lazy"${n.imgPosition ? ` style="object-position: ${n.imgPosition}"` : ""} />
+        <img src="${assetUrl(n.img)}" alt="" loading="lazy"${n.imgPosition ? ` style="object-position: ${n.imgPosition}"` : ""} />
       </span>
       <time datetime="${n.date}">${localized(n.dateLabel, lang)}</time>
       <h3>${localized(n.title, lang)}</h3>
@@ -179,7 +166,7 @@ function renderEventRows() {
     (e) => `
     <a class="event-row reveal is-visible" href="${base}eventos/${e.id}.html">
       <span class="event-thumb">
-        <img src="${e.img}" alt="" loading="lazy" />
+        <img src="${assetUrl(e.img)}" alt="" loading="lazy" />
       </span>
       <span class="event-copy">
         <time class="meta" datetime="${e.date}">${localized(e.dateLabel, lang)}</time>
@@ -201,7 +188,7 @@ function renderHomeNews() {
       (n) => `
     <a class="insight reveal is-visible" href="${base}noticias/${n.id}.html">
       <span class="insight-media">
-        <img src="${n.img}" alt="" loading="lazy"${n.imgPosition ? ` style="object-position: ${n.imgPosition}"` : ""} />
+        <img src="${assetUrl(n.img)}" alt="" loading="lazy"${n.imgPosition ? ` style="object-position: ${n.imgPosition}"` : ""} />
       </span>
       <time datetime="${n.date}">${localized(n.dateLabel, lang)}</time>
       <h3>${localized(n.title, lang)}</h3>
@@ -209,6 +196,68 @@ function renderHomeNews() {
     </a>`
     )
     .join("");
+}
+
+function renderArticleCards() {
+  const grid = document.querySelector("[data-articles-grid]");
+  if (!grid || typeof ARTICLE_ITEMS === "undefined") return;
+  const lang = getLang();
+  const base = pathPrefix();
+  grid.innerHTML = ARTICLE_ITEMS.map(
+    (a) => `
+    <a class="content-card insight reveal is-visible" href="${base}articulos/${a.id}.html">
+      <span class="insight-media">
+        <img src="${assetUrl(a.img)}" alt="" loading="lazy"${a.heroPosition ? ` style="object-position: ${a.heroPosition}"` : ""} />
+      </span>
+      <time datetime="${a.date}">${localized(a.dateLabel, lang)}</time>
+      <h3>${localized(a.title, lang)}</h3>
+      <p>${localized(a.body, lang)}</p>
+    </a>`
+  ).join("");
+}
+
+function initArticleDetail() {
+  const root = document.querySelector("[data-article-detail]");
+  if (!root || typeof ARTICLE_ITEMS === "undefined") return;
+  const id = root.dataset.articleDetail;
+  const article = ARTICLE_ITEMS.find((a) => a.id === id);
+  if (!article) return;
+  const base = pathPrefix();
+
+  function render() {
+    const lang = getLang();
+    const bodyHtml = (localized(article.content, lang) || [])
+      .map((p) => (String(p).trim().startsWith("<") ? p : `<p>${p}</p>`))
+      .join("");
+    root.innerHTML = `
+    <section class="page-hero">
+      <div class="page-hero-media">
+        <img src="${assetUrl(article.img)}" alt="" style="object-position: ${article.heroPosition || "center 18%"}" />
+      </div>
+      <div class="page-hero-content">
+        <p class="eyebrow">${localized(article.dateLabel, lang)}${article.author ? ` · ${localized(article.author, lang)}` : ""}</p>
+        <h1>${localized(article.title, lang)}</h1>
+      </div>
+    </section>
+    <section class="band-light">
+      <article class="event-detail reveal is-visible">
+        <p class="event-detail-lead">${localized(article.body, lang)}</p>
+        <div class="event-detail-body">${bodyHtml}</div>
+        <div class="event-detail-actions">
+          ${
+            article.pdf
+              ? `<a class="btn btn-solid" href="${assetUrl(article.pdf)}" target="_blank" rel="noopener noreferrer">${t("articles.pdf", lang)}</a>`
+              : ""
+          }
+          <a class="btn btn-ghost-dark" href="${base}articulos.html">${t("articles.back", lang)}</a>
+        </div>
+      </article>
+    </section>`;
+    document.title = `${localized(article.title, lang)} — Ávila Arias & Asociados`;
+  }
+
+  window.addEventListener("aaa:langchange", render);
+  render();
 }
 
 function renderHomeEvents() {
@@ -220,7 +269,7 @@ function renderHomeEvents() {
     (e) => `
     <a class="event-row" href="${base}eventos/${e.id}.html">
       <span class="event-thumb">
-        <img src="${e.img}" alt="" loading="lazy" />
+        <img src="${assetUrl(e.img)}" alt="" loading="lazy" />
       </span>
       <span class="event-copy">
         <time class="meta" datetime="${e.date}">${localized(e.dateLabel, lang)}</time>
@@ -243,11 +292,18 @@ function pathPrefix() {
     parts.length >= 2 &&
     (parts[parts.length - 2] === "equipo" ||
       parts[parts.length - 2] === "eventos" ||
-      parts[parts.length - 2] === "noticias")
+      parts[parts.length - 2] === "noticias" ||
+      parts[parts.length - 2] === "articulos")
   ) {
     return "../";
   }
   return "";
+}
+
+function assetUrl(src) {
+  if (!src) return "";
+  if (/^(https?:|data:|mailto:)/i.test(src)) return src;
+  return pathPrefix() + src.replace(/^\//, "");
 }
 
 function renderHeader(active) {
@@ -418,7 +474,7 @@ function initTeamDirectory() {
       .map(
         (p) => `
       <a class="person-card" href="${base}equipo/${p.id}.html">
-        <div class="photo"><img src="${p.photo}" alt="${p.name}" loading="lazy" /></div>
+        <div class="photo"><img src="${assetUrl(p.photo)}" alt="${p.name}" loading="lazy" /></div>
         <div class="body">
           <h3>${p.name}</h3>
           <p class="role">${localized(p.role, lang)}</p>
@@ -481,7 +537,7 @@ function initEventDetail() {
   if (!event) return;
   const base = pathPrefix();
   const gallery = (event.gallery || [])
-    .map((src) => `<img src="${src}" alt="" loading="lazy" />`)
+    .map((src) => `<img src="${assetUrl(src)}" alt="" loading="lazy" />`)
     .join("");
 
   function render() {
@@ -492,11 +548,14 @@ function initEventDetail() {
     const bodyHtml = (localized(event.content, lang) || [])
       .map((p) => `<p>${p}</p>`)
       .join("");
+    const heroMedia = event.plainTitle
+      ? ""
+      : `<div class="page-hero-media">
+        <img src="${assetUrl(event.heroImg || event.img)}" alt="" style="object-position: ${event.heroPosition || "center 12%"}" />
+      </div>`;
     root.innerHTML = `
-    <section class="page-hero">
-      <div class="page-hero-media">
-        <img src="${event.img}" alt="" style="object-position: ${event.heroPosition || 'center 12%'}" />
-      </div>
+    <section class="page-hero${event.plainTitle ? " light page-hero-plain" : ""}">
+      ${heroMedia}
       <div class="page-hero-content">
         <p class="eyebrow">${localized(event.dateLabel, lang)} · ${localized(event.place, lang)}</p>
         <h1>${localized(event.title, lang)}</h1>
@@ -515,7 +574,7 @@ function initEventDetail() {
         <div class="event-detail-actions">
           ${
             event.url
-              ? `<a class="btn btn-solid" href="${event.url}" target="_blank" rel="noopener noreferrer">${t("events.official", lang)}</a>`
+              ? `<a class="btn btn-solid" href="${event.url}" target="_blank" rel="noopener noreferrer">${event.cta ? localized(event.cta, lang) : t("events.official", lang)}</a>`
               : ""
           }
           <a class="btn btn-ghost-dark" href="${base}eventos.html">${t("events.back", lang)}</a>
@@ -537,18 +596,18 @@ function initNewsDetail() {
   if (!news) return;
   const base = pathPrefix();
   const gallery = (news.gallery || [])
-    .map((src) => `<img src="${src}" alt="" loading="lazy" />`)
+    .map((src) => `<img src="${assetUrl(src)}" alt="" loading="lazy" />`)
     .join("");
 
   function render() {
     const lang = getLang();
     const bodyHtml = (localized(news.content, lang) || [])
-      .map((p) => `<p>${p}</p>`)
+      .map((p) => (String(p).trim().startsWith("<") ? p : `<p>${p}</p>`))
       .join("");
     root.innerHTML = `
     <section class="page-hero">
       <div class="page-hero-media">
-        <img src="${news.img}" alt="" style="object-position: ${news.heroPosition || news.imgPosition || "center 18%"}" />
+        <img src="${assetUrl(news.img)}" alt="" style="object-position: ${news.heroPosition || news.imgPosition || "center 18%"}" />
       </div>
       <div class="page-hero-content">
         <p class="eyebrow">${localized(news.dateLabel, lang)}</p>
@@ -588,7 +647,7 @@ function initProfile() {
   function render() {
     const lang = getLang();
     root.innerHTML = `
-    <div class="profile-photo"><img src="${person.photo}" alt="${person.name}" /></div>
+    <div class="profile-photo"><img src="${assetUrl(person.photo)}" alt="${person.name}" /></div>
     <div class="profile-main">
       <p class="eyebrow">${t("team.eyebrow", lang)}</p>
       <h1>${person.name}</h1>
@@ -886,16 +945,19 @@ document.addEventListener("DOMContentLoaded", () => {
   initProfile();
   initEventDetail();
   initNewsDetail();
+  initArticleDetail();
   initContactForm();
   initClientsShowcase();
   initImpactMetrics();
   initSocialVideos();
   renderNewsCards();
+  renderArticleCards();
   renderEventRows();
   renderHomeNews();
   renderHomeEvents();
   window.addEventListener("aaa:langchange", () => {
     renderNewsCards();
+    renderArticleCards();
     renderEventRows();
     renderHomeNews();
     renderHomeEvents();
