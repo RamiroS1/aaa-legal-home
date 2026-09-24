@@ -974,7 +974,7 @@ const ARTICLE_ITEMS = [
         "It highlights their role in protecting investigated assets from illicit use, and emphasizes that these measures do not in themselves amount to forfeiture.",
       ],
     },
-    img: "media/articulos/politica-economica-cover.jpg",
+    img: "media/wp/extincion-de-dominio-urgente-enmendar-incertidumbre.jpg",
     pdf: "media/articulos/politica-economica-y-financiera.pdf",
     heroPosition: "center 18%",
   },
